@@ -66,13 +66,45 @@ export const useCaseStore = defineStore("cases", {
       await axios.request(config).then((response) => {
         // console.log(response.data.id);
         this.caseStore = response.data;
+        console.log(this.caseStore);
 
         localStorage.removeItem("id");
         localStorage.setItem("id", id);
-        console.log(this.caseStore);
+
+        localStorage.removeItem("name");
+        localStorage.setItem("name", this.caseStore.case_name);
+
+        localStorage.removeItem("radicate");
+        localStorage.setItem("radicate", this.caseStore.case_radicate);
+
+        localStorage.removeItem("userid");
+        localStorage.setItem("userid", this.caseStore.case_user_id);
+
+        localStorage.removeItem("personid");
+        localStorage.setItem("personid", this.caseStore.case_person_id);
 
       });
     },
+
+    /* reiniciar */
+    async reiniciar(id) {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/cases/${id}`,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config).then((response) => {
+        location.reload();
+        
+      });
+    },
+
     /* get cases page */
     async getCasesPage(page) {
       await axios.get(page).then((response) => {

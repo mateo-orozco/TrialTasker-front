@@ -3,9 +3,9 @@
         <HeaderTableVue title="Casos Activos" to="CreateCase" />
 
         <div class="navbar">
-            <RouterLink :to="{ name: 'CambiarEstatus' }" class="button">
+            <!-- <RouterLink :to="{ name: 'CambiarEstatus' }" class="button">
                 <div class="Button">Cambiar Estatus</div>
-            </RouterLink>
+            </RouterLink> -->
             <RouterLink :to="{ name: 'CreatePerson' }" class="button">
                 <div class="Button">Crear Persona</div>
             </RouterLink>
@@ -28,7 +28,11 @@
             </thead>
             <tbody>
                 <tr v-for="(active, index) in cases.activeCases" class="caso">
-                    <td><input type="checkbox"></td>
+                    <td>
+                        <RouterLink :to="{ name: 'CambiarEstatus' }" class="button" @click="cases.getCase(active.id),cases.reiniciar(active.id)">
+                            Cambiar Estatus
+                        </RouterLink>
+                    </td>
                     <td>{{ cases.numactivos[index] }}</td>
                     <td>{{ active.case_name }}</td>
                     <td>{{ active.case_radicate }}</td>
@@ -53,6 +57,12 @@ import { useCaseStore } from '@/stores/caseStore';
 import HeaderTableVue from '@/components/headers/HeaderTableNoButton.vue';
 
 localStorage.removeItem("id");
+localStorage.removeItem("personid");
+localStorage.removeItem("userid");
+localStorage.removeItem("radicate");
+localStorage.removeItem("name");
+
+
 const cases = useCaseStore();
 onMounted(async () => {
     await cases.casesActive();
