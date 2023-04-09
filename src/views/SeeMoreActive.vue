@@ -11,7 +11,7 @@
         
 
         <div class="contenido">
-            <h2 class="seccion">CLIENTE</h2>
+            <h2 class="seccion">Caso</h2>
             <div class="cliente" >
                 <div class="info">
                     <h2 class="titulos">Name:</h2>

@@ -83,6 +83,12 @@ export const useCaseStore = defineStore("cases", {
         localStorage.removeItem("personid");
         localStorage.setItem("personid", this.caseStore.case_person_id);
 
+        localStorage.removeItem("username");
+        localStorage.setItem("username", this.caseStore.case_user.name);
+
+        localStorage.removeItem("personname");
+        localStorage.setItem("personname", this.caseStore.case_person.per_name);
+
       });
     },
 

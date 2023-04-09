@@ -9,7 +9,7 @@
         </FormGroup>
         <FormGroup label="Persona" :error="cases.errors ? cases.errors.case_person_id : []">
             <select id="case_person_id" v-model="form.case_person_id">
-                <option value="">Juez...</option>
+                <option value="">Cliente</option>
                 <option v-for="person in persons.personsAll" :value="person.id">{{ person.per_name }} {{
                     person.per_lastname }}</option>
             </select>

@@ -2,11 +2,18 @@
     <HeaderAccions title="Editar Caso" to="CasosActivos" />
     <Form :create="cases.updateCase" :form="form" button-text="Actualizar">
     <!-- <Form :create="cases.updateCase(form.value)" :form="form" button-text="Actualizar"> -->
-        <input type="text" v-model="form.case_name" placeholder="Nombre">
-        <input type="text" v-model="form.case_radicate" placeholder="Radicado">
-        <input type="number" v-model="form.case_user_id" placeholder="Id usuario">
-        <input type="number" v-model="form.case_person_id" placeholder="Id persona">
-        
+        <FormGroup label="Nombre" :error="cases.errors ? cases.errors.case_status : []">
+            <input type="text" v-model="form.case_name" >
+        </FormGroup>
+        <FormGroup label="Radicado" :error="cases.errors ? cases.errors.case_status : []">
+            <input type="text" v-model="form.case_radicate" >
+        </FormGroup>
+        <FormGroup label="Abogado" :error="cases.errors ? cases.errors.case_status : []">
+            <input type="text" v-model="form.username" disabled>
+        </FormGroup>
+        <FormGroup label="Persona Relacionada" :error="cases.errors ? cases.errors.case_status : []">
+            <input type="text" v-model="form.personname" disabled>
+        </FormGroup>
         <FormGroup label="Estado" :error="cases.errors ? cases.errors.case_status : []">
             <select id="case_status" v-model="form.case_status">
                 <option value="1">Activo</option>
@@ -42,6 +49,9 @@ var name = localStorage.getItem("name");
 var radicate = localStorage.getItem("radicate");
 var user = localStorage.getItem("userid");
 var person = localStorage.getItem("personid");
+var username = localStorage.getItem("username");
+var pername = localStorage.getItem("personname");
+
 
 form.value = {
     id: casoid,
@@ -49,7 +59,9 @@ form.value = {
     case_name: name,
     case_radicate: radicate,
     case_user_id: user,
-    case_person_id: person
+    case_person_id: person,
+    personname: pername,
+    username: username,
 }
 
 onMounted(async () => {

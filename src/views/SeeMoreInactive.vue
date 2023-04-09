@@ -6,7 +6,7 @@
         </RouterLink>
         <div class="contenido">
             <div class="cliente" >
-                <h2 class="seccion">CLIENTE:</h2>
+                <h2 class="seccion">Caso:</h2>
                 <h2 class="titulos">Name:</h2>
                 <p class="informacion">{{ cases.caseStore.case_name }}</p>
                 <h2 class="titulos">Radicado:</h2>
