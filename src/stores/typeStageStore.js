@@ -20,7 +20,19 @@ export const useTypeStageStore = defineStore("typeStages", {
   actions: {
     /* get all typeStages with paginate */
     async getTypeStages() {
-      await axios.get("/api/typeStages").then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/typeStages`,
+        headers: {
+          Accept: "application/json",
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config)
+      .then((response) => {
         this.typeStagesStore = response.data;
       });
     },
@@ -33,7 +45,19 @@ export const useTypeStageStore = defineStore("typeStages", {
     },
     /* get typeStage */
     async getTypeStage(id) {
-      await axios.get("/api/typeStages/" + id).then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/typeStages/${id}`,
+        headers: {
+          Accept: "application/json",
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };  
+      await axios.request(config)
+        .then((response) => {
         this.typeStageStore = response.data;
       });
     },
@@ -47,8 +71,19 @@ export const useTypeStageStore = defineStore("typeStages", {
     async createTypeStage(req) {
       this.errorsStore = [];
       this.messagesStore = [];
-      await axios
-        .post("/api/typeStages", req)
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/typeStages`, 
+        headers: {
+          Accept: "application/json",
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        data: req,
+      };
+      await axios.request(config)
         .then((response) => {
           this.messagesStore = response.data.message;
           this.getTypeStages();
@@ -62,8 +97,19 @@ export const useTypeStageStore = defineStore("typeStages", {
     async updateTypeStage(req) {
       this.errorsStore = [];
       this.messagesStore = [];
-      await axios
-        .put("/api/typeStages/" + req.id, req)
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "put",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/typeStages/${req.id}`,
+        headers: {  
+          Accept: "application/json",
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        data: req,
+      };
+      await axios.request(config)
         .then((response) => {
           this.messagesStore = response.data;
           this.getTypeStages();
@@ -77,7 +123,19 @@ export const useTypeStageStore = defineStore("typeStages", {
     async deleteTypeStage(id) {
       this.errorsStore = [];
       this.messagesStore = [];
-      await axios.delete("/api/typeStages/" + id).then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "delete",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/typeStages/${id}`,
+        headers: {
+          Accept: "application/json",
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config)
+        .then((response) => {
         this.messagesStore = response.data;
         this.getTypeStages();
       });
