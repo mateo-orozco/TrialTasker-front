@@ -21,6 +21,7 @@ import Sidebar from './Sidebar/Sidebar.vue';
 
 
 
+
 </script>
 
 <style scoped>
@@ -49,6 +50,7 @@ main {
 /* Media query for mobile screens */
 @media screen and (max-width: 768px) {
     .sidebar {
+        position: fixed;
         padding: 0;
         left: 0%;
         width: 100%;
@@ -78,7 +80,7 @@ main {
 @media screen and (max-width: 768px) {
     .container-padding {
         padding: 1.5rem;
-        margin: 75px 0px 0px 0px;
+        margin: 80px 0px 0px 0px;
     }
 }
 

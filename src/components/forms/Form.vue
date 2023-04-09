@@ -48,6 +48,7 @@ const props = defineProps({
 .form .btn {
     width: 100%;
     max-width: 400px;
+    margin-top: 20px;
 }
 
 
