@@ -22,7 +22,18 @@ export const useFileStore = defineStore('fileStore', {
         async getFiles() {
             this.errorsStore = [];
             this.messagesStore = [];
-            await axios.get('/api/files')
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/files`,
+                headers: {
+                    Accept: 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.filesStore = response.data;
             });
@@ -44,7 +55,18 @@ export const useFileStore = defineStore('fileStore', {
         },
         /* get file */
         async getFile(id) {
-            await axios.get('/api/files/' + id)
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/files/${id}`,
+                headers: {
+                    Accept: 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.fileStore = response.data;
             });
@@ -53,7 +75,19 @@ export const useFileStore = defineStore('fileStore', {
         async createFile(file) {
             this.errorsStore = [];
             this.messagesStore = [];
-            await axios.post('/api/files', file)
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/files`,
+                headers: {
+                    Accept: 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                data: file,
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getFiles();
@@ -67,7 +101,19 @@ export const useFileStore = defineStore('fileStore', {
         async updateFile(file) {
             this.errorsStore = [];
             this.messagesStore = [];
-            await axios.put('/api/files/' + file.id, file)
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'put',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/files/${file.id}`,
+                headers: {
+                    Accept: 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                data: file,
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getFiles();
@@ -81,7 +127,18 @@ export const useFileStore = defineStore('fileStore', {
         async deleteFile(id) {
             this.errorsStore = [];
             this.messagesStore = [];
-            await axios.delete('/api/files/' + id)
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'delete',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/files/${id}`,
+                headers: {
+                    Accept: 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getFiles();
