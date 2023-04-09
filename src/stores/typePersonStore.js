@@ -82,6 +82,7 @@ export const useTypePersonStore = defineStore("typePersons", {
       // .catch(error => {
       //     this.errorsStore = error.response.data.errors;
       // });
+      console.log("-----------createTypePerson-----------");
       const token = localStorage.getItem("token");
       let config = {
         method: "post",
@@ -103,7 +104,6 @@ export const useTypePersonStore = defineStore("typePersons", {
           router.push({ name: "TypePersonDashboard" });
         })
         .catch((error) => {
-          console.log(error);
           this.errorsStore = error.response.data.errors;
         });
     },
