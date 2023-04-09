@@ -19,8 +19,8 @@
                     <td class="tdEstatus">Cambiar Estatus</td>
                     <td class="tds">Numero de caso</td>
                     <td class="tds">Nombre del Cliente</td>
+                    <td class="tds">Nit</td>
                     <td class="tds">Radicado</td>
-                    <td class="tds">Estatus</td>
                     <td class="tds">Acciones</td>
                 </tr>
             </thead>
@@ -32,9 +32,9 @@
                         </RouterLink>
                     </td>
                     <td>{{ cases.numinactivos[index] }}</td>
-                    <td>{{ active["case_name"] }}</td>
+                    <td>{{ active.case_person.per_name }} {{ active.case_person.per_lastname }}</td>
+                    <td>{{ active.case_person.per_nit }}</td>
                     <td>{{ active["case_radicate"] }}</td>
-                    <td>Inactivo</td>
                     <td>
                         <RouterLink :to="{ name: 'SeeMoreActive' }" class="navButton" @click="cases.getCase(active.id)">
                             <div class="buttonSeeMore">Ver Mas</div>
