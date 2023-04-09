@@ -20,7 +20,18 @@ export const useStageStore = defineStore("stage", {
     actions: {
         /* get all stages with paginate */
         async getStages() {
-            await axios.get("/api/stages")
+            const   token = localStorage.getItem("token");
+            let config = {
+                method: "get",
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/stages`,
+                headers: {
+                    Accept: "application/json",
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.stagesStore = response.data;
             });
@@ -41,7 +52,18 @@ export const useStageStore = defineStore("stage", {
         },
         /* get stage */
         async getStage(id) {
-            await axios.get("/api/stages/" + id)
+            const token = localStorage.getItem("token");
+            let config = {
+                method: "get",
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/stages/${id}`,
+                headers: {
+                    Accept: "application/json",
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.stageStore = response.data;
             });
@@ -50,7 +72,19 @@ export const useStageStore = defineStore("stage", {
         async createStage(stage) {
             this.errorsStore = [];
             this.messagesStore = [];
-            await axios.post("/api/stages", stage)
+            const token = localStorage.getItem("token");
+            let config = {
+                method: "post",
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/stages`,
+                headers: {
+                    Accept: "application/json",
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                data: stage,
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getStages();
@@ -64,7 +98,19 @@ export const useStageStore = defineStore("stage", {
         async updateStage(stage) {
             this.errorsStore = [];
             this.messagesStore = [];
-            await axios.put("/api/stages/" + stage.id, stage)
+            const token = localStorage.getItem("token");
+            let config = {  
+                method: "put",
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/stages/${stage.id}`,
+                headers: {
+                    Accept: "application/json",
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                data: stage,
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getStages();
@@ -76,7 +122,18 @@ export const useStageStore = defineStore("stage", {
         },
         /* delete stage */
         async deleteStage(id) {
-            await axios.delete("/api/stages/" + id)
+            const token = localStorage.getItem("token");
+            let config = {
+                method: "delete",
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/stages/${id}`,
+                headers: {
+                    Accept: "application/json",
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getStages();
