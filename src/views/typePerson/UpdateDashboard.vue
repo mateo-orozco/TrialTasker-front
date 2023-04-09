@@ -1,10 +1,23 @@
 <template>
     <HeaderAccions title="Actualizar Tipo de Persona" to="TypePersonDashboard"/>
-    <Form :create="typePersons.updateTypePerson" :form="form" button-text="Actualizar">
+    <!-- <Form :create="typePersons.updateTypePerson" :form="form" button-text="Actualizar">
         <FormGroup label="Nombre" :error="typePersons.errors ? typePersons.errors.type_person_name : []">
             <input type="text" id="type_person_name" v-model="form.type_person_name">
         </FormGroup>
-    </Form>
+    </Form> -->
+    <form @submit.prevent="typePersons.updateTypePerson(form)" class="form" button-text="Actualizar">
+ 
+    <div>
+ 
+        <label for="type_person_name">Nombre</label>
+ 
+        <input type="text" id="type_person_name" v-model="form.type_person_name">
+ 
+    </div>
+ 
+    <button type="submit">@{{ buttonText }}</button>
+ 
+</form>
 </template>
 
 <script setup>

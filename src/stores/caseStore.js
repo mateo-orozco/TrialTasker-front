@@ -46,10 +46,22 @@ export const useCaseStore = defineStore("cases", {
 
     /* get all cases */
     async getCasesAll() {
-      await axios.get("/api/cases/all").then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/cases/all`,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config).then((response) => {
         this.casesAllStore = response.data;
       });
     },
+      
     /* get case */
     async getCase(id) {
       const token = localStorage.getItem("token");

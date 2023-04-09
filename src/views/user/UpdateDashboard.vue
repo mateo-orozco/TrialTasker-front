@@ -1,6 +1,6 @@
 <template>
     <HeaderAccions title="Actualizar Usuario" to="UserDashboard" />
-    <Form :create="users.updateUser" :form="form" button-text="Actualizar">
+    <!-- <Form :create="users.updateUser" :form="form" button-text="Actualizar">
         <FormGroup label="Nombre" :error="users.errors ? users.errors.name : []">
             <input type="text" id="name" v-model="form.name">
         </FormGroup>
@@ -17,7 +17,34 @@
             <input type="text" id="address" v-model="form.address">
         </FormGroup>
         
-    </Form>
+    </Form> -->
+    <form @submit.prevent="users.updateUser(form)" class="form" button-text="Actualizar">
+        <div>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" v-model="form.name">
+        </div>
+        <div>
+            <label for="lastname">Apellidos</label>
+            <input type="text" id="lastname" v-model="form.lastname">
+        </div>
+        <div>
+            <label for="email">Correo</label>
+            <input type="email" id="email" v-model="form.email">
+
+        </div>
+        <div>
+            <label for="phone">Teléfono</label>
+            <input type="text" id="phone" v-model="form.phone">
+
+        </div>
+        <div>
+            <label for="address">Dirección</label>
+            <input type="text" id="address" v-model="form.address">
+
+        </div>
+        
+        <button type="submit">Actualizar</button>
+    </form>
 </template>
 
 <script setup>

@@ -1,10 +1,17 @@
 <template>
     <HeaderAccions title="Crear Tipo de Etapa" to="TypeStageDashboard" />
-    <Form :create="typeStages.createTypeStage" :form="form" button-text="Crear">
+    <!-- <Form :create="typeStages.createTypeStage" :form="form" button-text="Crear">
         <FormGroup label="Nombre" :error="typeStages.errors ? typeStages.errors.type_stage_name : []">
             <input type="text" id="type_stage_name" v-model="form.type_stage_name">
         </FormGroup>
-    </Form>
+    </Form> -->
+    <form @submit.prevent="typeStages.createTypeStage(form)" class="form" button-text="Crear">
+        <div>
+            <label for="type_stage_name">Nombre</label>
+            <input type="text" id="type_stage_name" v-model="form.type_stage_name">
+        </div>
+        <button type="submit">@{{ buttonText }}</button>
+    </form>
 </template>
 
 <script setup>

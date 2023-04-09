@@ -39,10 +39,23 @@ export const useTypeStageStore = defineStore("typeStages", {
 
     /* get all typeStages */
     async getTypeStagesAll() {
-      await axios.get("/api/typeStages/all").then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/typeStages/all`,
+        headers: {
+          Accept: "application/json",
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config)
+      .then((response) => {
         this.typeStagesAllStore = response.data;
       });
     },
+      
     /* get typeStage */
     async getTypeStage(id) {
       const token = localStorage.getItem("token");
