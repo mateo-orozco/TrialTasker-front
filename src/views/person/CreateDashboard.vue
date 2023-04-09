@@ -51,8 +51,8 @@ import { onMounted, ref } from 'vue';
 import HeaderAccions from '../../components/headers/HeaderAccions.vue';
 import Form from '../../components/forms/Form.vue';
 import FormGroup from '../../components/forms/FormGroup.vue';
-import { usePersonStore } from '../../stores/personStore';
-import { useTypePersonStore } from '../../stores/typePersonStore';
+import { usePersonStore } from '@/stores/personStore';
+import { useTypePersonStore } from '@/stores/typePersonStore';
 
 
 const persons = usePersonStore();

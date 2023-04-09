@@ -1,6 +1,6 @@
 <template>
     <HeaderAccions title="Crear Persona" to="CasosActivos" />
-    <Form :create="persons.createPerson" :form="form" button-text="Crear">
+    <!-- <Form :create="persons.createPerson" :form="form" button-text="Crear">
         <FormGroup label="Tipo de persona" :error="persons.errors ? persons.errors.per_type_person_id : []">
             <select class="select" id="per_type_person_id" v-model="form.per_type_person_id">
                 <option value="">Seleccione</option>
@@ -44,7 +44,82 @@
         <FormGroup label="Numero" :error="persons.errors ? persons.errors.per_number : []">
             <input class="number" type="text" id="per_number" v-model="form.per_number">
         </FormGroup>
-    </Form>
+    </Form> -->
+    <form class="form" @submit.prevent=" persons.createPerson(form)">
+     <div class="form-group">
+         <label for="per_type_person_id">Tipo de persona</label>
+         <select class="select" id="per_type_person_id" v-model="form.per_type_person_id">
+             <option value="">Seleccione</option>
+             <option v-for="typePerson in typePersons.typePersonsAll" :key="typePerson.id" :value="typePerson.id">{{
+                 typePerson.type_person_name }}</option>
+         </select>
+         <span v-if="errors && errors.per_type_person_id" class="help is-danger">{{ errors.per_type_person_id[0] }}</span>
+ 
+        </div>
+        <div class="form-group">
+            <label for="per_name">Nombre</label>
+            <input class="input" type="text" id="per_name" v-model="form.per_name">
+            <span v-if="errors && errors.per_name" class="help is-danger">{{ errors.per_name[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_lastname">Apellido</label>
+            <input class="input" type="text" id="per_lastname" v-model="form.per_lastname">
+            <span v-if="errors && errors.per_lastname" class="help is-danger">{{ errors.per_lastname[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_email">Correo</label>
+            <input class="email" type="text" id="per_email" v-model="form.per_email">
+            <span v-if="errors && errors.per_email" class="help is-danger">{{ errors.per_email[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_phone">Telefono</label>
+            <input class="input" type="text" id="per_phone" v-model="form.per_phone">
+            <span v-if="errors && errors.per_phone" class="help is-danger">{{ errors.per_phone[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_address">Direccion</label>
+            <input class="input" type="text" id="per_address" v-model="form.per_address">
+            <span v-if="errors && errors.per_address" class="help is-danger">{{ errors.per_address[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_nit">Nit</label>
+            <input class="input" type="text" id="per_nit" v-model="form.per_nit">
+            <span v-if="errors && errors.per_nit" class="help is-danger">{{ errors.per_nit[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_issue_nit">Fecha de expedicion</label>
+            <input class="date" type="date" id="per_issue_nit" v-model="form.per_issue_nit">
+            <span v-if="errors && errors.per_issue_nit" class="help is-danger">{{ errors.per_issue_nit[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_num_ministry">Numero de ministerio</label>
+            <input class="number" type="text" id="per_num_ministry" v-model="form.per_num_ministry">
+            <span v-if="errors && errors.per_num_ministry" class="help is-danger">{{ errors.per_num_ministry[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_num_dispaych">Numero de despacho</label>
+            <input class="number" type="text" id="per_num_dispaych" v-model="form.per_num_dispaych">
+            <span v-if="errors && errors.per_num_dispaych" class="help is-danger">{{ errors.per_num_dispaych[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_radicated">Radicado</label>
+            <input class="input" type="text" id="per_radicated" v-model="form.per_radicated">
+            <span v-if="errors && errors.per_radicated" class="help is-danger">{{ errors.per_radicated[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_authority">Autoridad</label>
+            <input class="input" type="text" id="per_authority" v-model="form.per_authority">
+            <span v-if="errors && errors.per_authority" class="help is-danger">{{ errors.per_authority[0] }}</span>
+        </div>
+        <div class="form-group">
+            <label for="per_number">Numero</label>
+            <input class="number" type="text" id="per_number" v-model="form.per_number">
+            <span v-if="errors && errors.per_number" class="help is-danger">{{ errors.per_number[0] }}</span>
+        </div>
+        <div class="form-group">
+            <button class="button is-primary" @click="save">Guardar</button>
+        </div>
+    </form>
 </template>
   
 <script setup>

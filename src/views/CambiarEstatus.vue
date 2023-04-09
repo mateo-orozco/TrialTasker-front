@@ -1,26 +1,30 @@
 <template>
     <HeaderAccions title="Editar Caso" to="CasosActivos" />
-    <Form :create="cases.updateCase" :form="form" button-text="Actualizar">
-    
-        <FormGroup label="Nombre" :error="cases.errors ? cases.errors.case_name : []">
+    <!-- <Form :create="cases.updateCase" :form="form" button-text="Actualizar">
             <input type="text" v-model="form.case_name" >
-        </FormGroup>
-        <FormGroup label="Radicado" :error="cases.errors ? cases.errors.case_radicate : []">
             <input type="text" v-model="form.case_radicate" >
-        </FormGroup>
-        <FormGroup label="Abogado" :error="cases.errors ? cases.errors : []">
             <input type="text" v-model="form.username" disabled>
-        </FormGroup>
-        <FormGroup label="Persona Relacionada" :error="cases.errors ? cases.errors : []">
             <input type="text" v-model="form.personname" disabled>
-        </FormGroup>
-        <FormGroup label="Estado" :error="cases.errors ? cases.errors.case_status : []">
             <select id="case_status" v-model="form.case_status">
                 <option value="1">Activo</option>
                 <option value="0">Inactivo</option>
             </select>
-        </FormGroup>
-    </Form>
+    </Form> -->
+
+    <form @submit.prevent="cases.updateCase(form)" class="form">
+            <input type="text" v-model="form.case_name" >
+            <input type="text" v-model="form.case_radicate" >
+            <input type="text" v-model="form.username" disabled>
+            <input type="text" v-model="form.personname" disabled>
+            <select id="case_status" v-model="form.case_status">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+         
+        <button type="submit">Actualizar</button>   
+    </form>
+    
+    
 </template>
 
 <script setup>
