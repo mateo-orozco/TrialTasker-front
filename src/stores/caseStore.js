@@ -37,7 +37,7 @@ export const useCaseStore = defineStore("cases", {
           "Content-Type": "application/json",
         },
       };
-      
+
       await axios.request(config).then((response) => {
         this.casesStore = response.data;
         console.log(response.data);
@@ -88,7 +88,6 @@ export const useCaseStore = defineStore("cases", {
 
         localStorage.removeItem("personname");
         localStorage.setItem("personname", this.caseStore.case_person.per_name);
-
       });
     },
 
@@ -107,7 +106,6 @@ export const useCaseStore = defineStore("cases", {
       };
       await axios.request(config).then((response) => {
         location.reload();
-        
       });
     },
 
@@ -131,7 +129,8 @@ export const useCaseStore = defineStore("cases", {
         },
         data: req,
       };
-      await axios.request(config)
+      await axios
+        .request(config)
         .then((response) => {
           this.messagesStore = response.data;
           this.getCases();
@@ -155,8 +154,9 @@ export const useCaseStore = defineStore("cases", {
           "Content-Type": "application/json",
         },
         data: req,
-      };  
-      await axios.request(config)
+      };
+      await axios
+        .request(config)
         .then((response) => {
           this.messagesStore = response.data;
           this.getCases();
@@ -172,14 +172,15 @@ export const useCaseStore = defineStore("cases", {
       let config = {
         method: "delete",
         maxBodyLength: Infinity,
-        url: `${axios.defaults.baseURL}api/cases/${id}`,  
+        url: `${axios.defaults.baseURL}api/cases/${id}`,
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       };
-      await axios.request(config)
+      await axios
+        .request(config)
         .then((response) => {
           this.messagesStore = response.data;
           this.getCases();
@@ -193,28 +194,27 @@ export const useCaseStore = defineStore("cases", {
     async casesActive() {
       const token = localStorage.getItem("token");
       let config = {
-        method: 'get',
+        method: "get",
         maxBodyLength: Infinity,
         url: `${axios.defaults.baseURL}api/casesActive`,
-        headers: { 
-          'Accept': 'aplication/json', 
-          'Authorization': `Bearer ${token}`, 
-          'Content-Type': 'application/json', 
+        headers: {
+          Accept: "aplication/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       };
-      await axios.request(config)
+      await axios
+        .request(config)
         .then((response) => {
           // console.log(response.data);
           this.activeCases = response.data;
           // console.log(this.activeCases);
-          var cont=0;
+          var cont = 0;
           for (const i in this.activeCases) {
-            cont++
-            this.numactivos[i]=cont;
-
+            cont++;
+            this.numactivos[i] = cont;
           }
-          this.activos=cont;
-
+          this.activos = cont;
         })
         .catch((error) => {
           this.errorsStore = error.response.data.errors;
@@ -223,27 +223,27 @@ export const useCaseStore = defineStore("cases", {
     async casesInactive() {
       const token = localStorage.getItem("token");
       let config = {
-        method: 'get',
+        method: "get",
         maxBodyLength: Infinity,
         url: `${axios.defaults.baseURL}api/casesInactive`,
-        headers: { 
-          'Accept': 'aplication/json', 
-          'Authorization': `Bearer ${token}`, 
-          'Content-Type': 'application/json', 
+        headers: {
+          Accept: "aplication/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       };
-      await axios.request(config)
+      await axios
+        .request(config)
         .then((response) => {
           this.inactiveCases = response.data;
           // console.log(this.inactiveCases);
 
-          var cont=0;
+          var cont = 0;
           for (const i in this.inactiveCases) {
-            cont++
-            this.numinactivos[i]=cont;
+            cont++;
+            this.numinactivos[i] = cont;
           }
-          this.inactivos=cont;
-
+          this.inactivos = cont;
         })
         .catch((error) => {
           this.errorsStore = error.response.data.errors;
@@ -253,16 +253,17 @@ export const useCaseStore = defineStore("cases", {
     async infoCase(id) {
       const token = localStorage.getItem("token");
       let config = {
-        method: 'get',
+        method: "get",
         maxBodyLength: Infinity,
         url: `${axios.defaults.baseURL}api/infoCase/${id}`,
         headers: {
-          'Accept': 'aplication/json',
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          Accept: "aplication/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       };
-      await axios.request(config)
+      await axios
+        .request(config)
         .then((response) => {
           console.log("----------------infoCase----------------");
           console.log(response.data);
@@ -271,6 +272,5 @@ export const useCaseStore = defineStore("cases", {
           this.errorsStore = error.response.data.errors;
         });
     },
-
-  }
+  },
 });
