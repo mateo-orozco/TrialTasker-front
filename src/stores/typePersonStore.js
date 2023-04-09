@@ -64,7 +64,18 @@ export const useTypePersonStore = defineStore("typePersons", {
     },
     /* get typePerson */
     async getTypePerson(id) {
-      await axios.get("/api/type-persons/" + id).then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/type-persons/${id}`, 
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config).then((response) => {  
         this.typePersonStore = response.data;
       });
     },
@@ -112,8 +123,19 @@ export const useTypePersonStore = defineStore("typePersons", {
     async updateTypePerson(typePerson) {
       this.errorsStore = [];
       this.messagesStore = [];
-      await axios
-        .put("/api/type-persons/" + typePerson.id, typePerson)
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "put",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/type-persons/${typePerson.id}`,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        data: typePerson,
+      };
+      await axios.request(config)
         .then((response) => {
           this.messagesStore = response.data;
           this.getTypePersons();
@@ -127,7 +149,18 @@ export const useTypePersonStore = defineStore("typePersons", {
     async deleteTypePerson(id) {
       this.errorsStore = [];
       this.messagesStore = [];
-      await axios.delete("/api/type-persons/" + id).then((response) => {
+      const token = localStorage.getItem("token");
+      let config = {
+        method: "delete",
+        maxBodyLength: Infinity,
+        url: `${axios.defaults.baseURL}api/type-persons/${id}`,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.request(config).then((response) => {
         this.messagesStore = response.data;
         this.getTypePersons();
       });

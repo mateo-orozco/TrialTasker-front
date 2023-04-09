@@ -22,7 +22,18 @@ export const useUserStore = defineStore('users', {
     actions: {
         /* get all users with paginate */
         async getUsers() {
-            await axios.get('/api/users')
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/users`,
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.usersStore = response.data;
                 console.log(response.data)
@@ -65,7 +76,19 @@ export const useUserStore = defineStore('users', {
         },
         /* update user */
         async updateUser(user) {
-            await axios.put('/api/users/' + user.id, user)
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'put',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/users/${user.id}`,
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                data: user,
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getUsers();
@@ -77,7 +100,18 @@ export const useUserStore = defineStore('users', {
         },
         /* delete user */
         async deleteUser(id) {
-            await axios.delete('/api/users/' + id)
+            const token = localStorage.getItem('token');
+            let config = {
+                method: 'delete',
+                maxBodyLength: Infinity,
+                url: `${axios.defaults.baseURL}api/users/${id}`,
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+            await axios.request(config)
             .then(response => {
                 this.messagesStore = response.data;
                 this.getUsers();
