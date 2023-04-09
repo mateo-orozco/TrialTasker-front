@@ -31,9 +31,9 @@ onMounted(() => {
   place-items: center;
   width: 100%;
   min-height: 100vh;
-  padding: 40px;
-  
+  padding: 5px;
 }
+
 
 
 

@@ -21,18 +21,18 @@
             </select>
         </FormGroup>
     </Form> -->
-    <form @submit.prevent="cases.createCase(form)" class="form">
-     <div class="form-group">
-         <label for="case_name">Nombre</label>
-         <input type="text" id="case_name" v-model="form.case_name">
-         <div v-if="cases.errors" class="error">
-             <div v-for="error in cases.errors.case_name" :key="error">
-                 {{ error }}
-             </div>
-         </div>
-     </div>
+    <form @submit.prevent="cases.createCase(form)" class="form info">
+        <div class="infocase">
+            <label for="case_name">Nombre</label>
+            <input type="text" id="case_name" v-model="form.case_name">
+            <div v-if="cases.errors" class="error">
+                <div v-for="error in cases.errors.case_name" :key="error">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
  
-        <div class="form-group">
+        <div class="infocase">
             <label for="case_radicate">Radicado</label>
             <input type="text" id="case_radicate" v-model="form.case_radicate">
             <div v-if="cases.errors" class="error">
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="infocase">
             <label for="case_person_id">Persona</label>
             <select id="case_person_id" v-model="form.case_person_id">
                 <option value="">Cliente</option>
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="infocase">
             <label for="case_user_id">Abogado</label>
             <select id="case_user_id" v-model="form.case_user_id">
                 <option value="">Seleccione un abogado</option>
@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+        
         <button type="submit">Crear</button>
         
     </form>
@@ -109,140 +110,53 @@ onMounted(() => {
 
 
 <style scoped>
-.title {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--verde);
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    padding: 10px;
+
+form{
+    text-align: center;
 }
 
-main {
-    color: #473800;
-    background-color: var(--my-hover-ligth);
-    height: auto;
-    border-radius: 15px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
-button {
-    font-size: 20px;
-}
-
-section {
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-}
-
-.izquierda {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    width: 45%;
-}
-
-.derecha {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-
-}
-
-input {
-    height: 30px;
-    width: 100%;
-    border-radius: 7px;
-    border: 1px var(--verde) solid;
-    cursor: pointer;
-    padding-left: 10px;
-
-
-}
-
-.selects {
+.info{
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-select {
-    border-radius: 5px;
-    border: none;
-    background-color: white;
-}
-
-.atras {
-    border: none;
-    border-radius: 5px;
-    width: 50px;
-    background-color: var(--verde);
-    color: white;
-    cursor: pointer;
-}
-
-.enviar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    border: none;
-    background-color: var(--my-hover-ligth);
-
-}
-
-.btnenviar {
-    background-color: var(--verde);
-    border-radius: 7px;
-    height: 30px;
-    width: 200px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-}
-
-.btnaccion {
-    display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
+    margin-top: 20px;
+}
+
+input{
+    height: 40px;
     width: 100%;
-}
-
-.infodefensor {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5%;
-}
-
-.info {
-    width: 45%;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-
-}
-
-.btna {
-    background-color: var(--verde);
-    border: none;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.334);
+    background-color: #e8e8e8;
     border-radius: 7px;
-    height: 30px;
-    width: 45%;
+}
+
+select{
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.334);
+    background-color: #e8e8e8;
+    border-radius: 7px;
+}
+
+button{
+    height: 40px;
+    width: 200px;
+    margin-top: 20px;
+    background-color: dimgray;
+    border-radius: 7px;
+    border: none;
     cursor: pointer;
     color: white;
+    margin: 20px auto;
+}
+.infocase{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 </style>

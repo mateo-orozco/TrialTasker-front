@@ -110,6 +110,7 @@ input {
 
 
 
+
 .circles {
 
     position: absolute;
@@ -121,6 +122,7 @@ input {
     z-index: -1;
     background-color: var(--brown);
 }
+
 
 .circles li {
     position: absolute;
@@ -225,5 +227,13 @@ input {
         border-radius: 50%;
     }
 
+}
+
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+    .circles{
+        height: 100vh;
+    }
 }
 </style>
