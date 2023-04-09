@@ -108,6 +108,8 @@ input {
     height: 10px;
 }
 
+
+
 .circles {
 
     position: absolute;

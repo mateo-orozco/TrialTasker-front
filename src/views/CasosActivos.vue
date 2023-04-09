@@ -182,4 +182,16 @@ a{
 input {
     height: 15px;
 }
+@media screen and (max-width: 768px) {
+    .Button {
+        border: solid 1px;
+        width: 35vw;
+        padding: 5px;
+        height: 30px;
+        text-align: center;
+        border-radius: 5px;
+        background-color: var(--verde);
+        color: var(--white);
+    }
+}
 </style>

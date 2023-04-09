@@ -1,5 +1,5 @@
 <template>
-        <div class="logo">
+    <div class="logo">
         <Logo :fill="'--white'" />
     </div>
     <div class="links" v-if="auth.user">
@@ -22,13 +22,13 @@
             <IconFileText :size="20" stroke-width="2.2" />
         </ButtonLink>
         
-        <ButtonLink to="Home" text="Inicio" v-if="!auth.user.is_admin">
+        <ButtonLink to="Home" text="Inicio" v-if="!auth.user.is_admin" class="ButtonLink">
             <IconHome :size="20" stroke-width="2.2" />
         </ButtonLink>
-        <ButtonLink to="CasosActivos" text="Casos Activos" v-if="!auth.user.is_admin">
+        <ButtonLink to="CasosActivos" text="Casos Activos" v-if="!auth.user.is_admin" class="ButtonLink">
             <IconDashboard :size="20" stroke-width="2.2" />
         </ButtonLink>
-        <ButtonLink to="CasosInactivos" text="Casos Inactivos" v-if="!auth.user.is_admin">
+        <ButtonLink to="CasosInactivos" text="Casos Inactivos" v-if="!auth.user.is_admin" class="ButtonLink">
             <IconDashboard :size="20" stroke-width="2.2" />
         </ButtonLink>
     </div>
@@ -64,7 +64,6 @@ onMounted(() => {
     width: 100%;
     border-bottom: 2px solid var(--my-hover-ligth);
 
-
 }
 
 .links {
@@ -74,7 +73,7 @@ onMounted(() => {
     flex-direction: column;
     gap: 0.5rem;
     overflow: auto;
-    height: 100%;
+    height: 70%;
 }
 
 .links::-webkit-scrollbar {
@@ -93,5 +92,43 @@ onMounted(() => {
 .user__name {
     font-size: 1rem;
     padding: 0.5rem 1rem;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+    .links{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        padding: 0%;
+    }
+    .ButtonLink{
+        height: 50px;
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .user__name {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        width: 350%;
+    }
+    .user{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+    }
+
+    
+
 }
 </style>

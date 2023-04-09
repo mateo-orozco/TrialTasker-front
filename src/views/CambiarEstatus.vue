@@ -2,24 +2,24 @@
     <HeaderAccions title="Editar Caso" to="CasosActivos" />
     <Form :create="cases.updateCase" :form="form" button-text="Actualizar">
     <!-- <Form :create="cases.updateCase(form.value)" :form="form" button-text="Actualizar"> -->
-        <FormGroup label="Nombre" :error="cases.errors ? cases.errors.case_status : []">
+        <!-- <FormGroup label="Nombre" :error="cases.errors ? cases.errors.case_status : []"> -->
             <input type="text" v-model="form.case_name" >
-        </FormGroup>
-        <FormGroup label="Radicado" :error="cases.errors ? cases.errors.case_status : []">
+        <!-- </FormGroup> -->
+        <!-- <FormGroup label="Radicado" :error="cases.errors ? cases.errors.case_status : []"> -->
             <input type="text" v-model="form.case_radicate" >
-        </FormGroup>
-        <FormGroup label="Abogado" :error="cases.errors ? cases.errors.case_status : []">
+        <!-- </FormGroup> -->
+        <!-- <FormGroup label="Abogado" :error="cases.errors ? cases.errors.case_status : []"> -->
             <input type="text" v-model="form.username" disabled>
-        </FormGroup>
-        <FormGroup label="Persona Relacionada" :error="cases.errors ? cases.errors.case_status : []">
+        <!-- </FormGroup> -->
+        <!-- <FormGroup label="Persona Relacionada" :error="cases.errors ? cases.errors.case_status : []"> -->
             <input type="text" v-model="form.personname" disabled>
-        </FormGroup>
-        <FormGroup label="Estado" :error="cases.errors ? cases.errors.case_status : []">
+        <!-- </FormGroup> -->
+        <!-- <FormGroup label="Estado" :error="cases.errors ? cases.errors.case_status : []"> -->
             <select id="case_status" v-model="form.case_status">
                 <option value="1">Activo</option>
                 <option value="0">Inactivo</option>
             </select>
-        </FormGroup>
+        <!-- </FormGroup> -->
     </Form>
 </template>
 

@@ -19,12 +19,15 @@
 import Sidebar from './Sidebar/Sidebar.vue';
     
 
+
+
 </script>
 
 <style scoped>
+
 main {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--white);
 }
 
@@ -36,9 +39,7 @@ main {
     width: 250px;
     height: 100%;
     position: fixed;
-
     background-color: var(--brown);
-
     color: var(--azulito);
     padding: 1.5rem 1.5rem 0 1.5rem;
     display: grid;
@@ -48,19 +49,23 @@ main {
 /* Media query for mobile screens */
 @media screen and (max-width: 768px) {
     .sidebar {
-        left: -100%;
+        padding: 0;
+        left: 0%;
         width: 100%;
-        height: 100%;
-        display: block;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-
+  
     
 
 }
 
 .container {
     flex: 1;
-    width: 100%;
+    min-width: auto;
     background-color: var(--white);
 }
 
@@ -72,7 +77,8 @@ main {
 /* Media query for mobile screens */
 @media screen and (max-width: 768px) {
     .container-padding {
-        margin: 0;
+        padding: 1.5rem;
+        margin: 75px 0px 0px 0px;
     }
 }
 

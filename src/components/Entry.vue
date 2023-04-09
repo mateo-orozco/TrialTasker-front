@@ -27,13 +27,13 @@ onMounted(() => {
 <style scoped>
 .entry {
   display: grid;
+  position: absolute;
   place-items: center;
   width: 100%;
   min-height: 100vh;
   padding: 40px;
   
 }
-
 
 
 

@@ -68,7 +68,12 @@ onMounted(() => {
 
 }
 
-
+@media screen and (max-width: 768px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 
 </style>
