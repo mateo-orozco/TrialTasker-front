@@ -35,7 +35,8 @@ import { useAuthStore } from "@/stores/authStore";
 const cases = useCaseStore();
 const persons = usePersonStore();
 const auth = useAuthStore();
-
+console.log("--------cases--------")
+console.log(cases);
 const form = ref({
     case_name: '',
     case_radicate: '',
