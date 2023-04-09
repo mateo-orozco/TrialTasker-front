@@ -1,11 +1,21 @@
-<template>
+<!-- <template>
     <HeaderAccions title="Crear Tipo de Persona" to="TypePersonDashboard" />
     <Form :create="typePersons.createTypePerson" :form="form" button-text="Crear">
         <FormGroup label="Nombre" :error="typePersons.errors ? typePersons.errors.type_person_name : []">
             <input type="text" id="type_person_name" v-model="form.type_person_name">
         </FormGroup>
     </Form>
+</template> -->
+
+<template>
+    <HeaderAccions title="Crear Tipo de Persona" to="TypePersonDashboard" />
+    <Form :create="typePersons && typePersons.createTypePerson" :form="form" button-text="Crear">
+        <FormGroup label="Nombre" :error="typePersons && typePersons.errors ? typePersons.errors.type_person_name : []">
+            <input type="text" id="type_person_name" v-model="form.type_person_name">
+        </FormGroup>
+    </Form>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';
