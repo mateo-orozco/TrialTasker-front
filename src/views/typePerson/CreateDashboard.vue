@@ -20,9 +20,6 @@ const typePersons = useTypePersonStore();
 const form = ref({
     type_person_name: ''
 });
-
 </script>
 
-<style>
-
-</style>
+<style></style>
