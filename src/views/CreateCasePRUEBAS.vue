@@ -1,6 +1,6 @@
 <template>
     <HeaderAccions title="Crear Caso" to="CasosActivos" />
-    <Form :create="cases.createCase" :form="form" button-text="Crear">
+    <Form :create="cases && cases.createCase" :form="form" button-text="Crear">
         <FormGroup label="Nombre" :error="cases.errors ? cases.errors.case_name : []">
             <input type="text" id="case_name" v-model="form.case_name">
         </FormGroup>
